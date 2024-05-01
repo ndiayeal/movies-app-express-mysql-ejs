@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include ('partials/head.ejs') %>
+	
+</head>
+<body>
+	
+	<!-- entete de la page -->
+	<header>
+		<%- include ('partials/header.ejs') %>
+	</header>
+	
+	<!-- le navbar de la page -->
+	<nav>
+		<%- include ('partials/nav.ejs') %>
+		
+	</nav>
+	
+	<!-- le contenu -->
+	<main>
+		<h3>Bientôt on aura les films</h3>
+		
+		<div>
+			<article id="art2">
+				<table border style="width: 100%;">
+					<tr>
+						<th>Titre</th>
+						<th>Année</th>
+						<th>Réalisateur</th>
+					</tr>
+					
+					<% films.forEach(function(film) { %>
+					
+						<tr>
+							<td><%= film.Title %></td>
+							<td><%= film.Year %></td>
+							<td><%= film.Author %></td>
+						</tr>
+						<% }); %>
+						
+				</table>
+			</article>
+		</div>
+	</main>
+	
+	<!-- le pied de page -->
+	
+	<footer>
+		<%- include ('partials/footer.ejs') %>
+		
+	</footer>
+</body>
+</html>
