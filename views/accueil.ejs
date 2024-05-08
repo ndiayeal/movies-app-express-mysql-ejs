@@ -19,10 +19,11 @@
 	
 	<!-- le contenu -->
 	<main>
-		<h3>Bientôt on aura les films</h3>
+		<h3><%= title %></h3>
 		
 		<div>
 			<article id="art2">
+				<a href="/ajout" style="margin-bottom: 4px;">Nouveau film</a>
 				<table border style="width: 100%;">
 					<tr>
 						<th>Titre</th>
@@ -30,12 +31,12 @@
 						<th>Réalisateur</th>
 					</tr>
 					
-					<% films.forEach(function(film) { %>
+					<% data.forEach(function(film) { %>
 					
 						<tr>
-							<td><%= film.Title %></td>
-							<td><%= film.Year %></td>
-							<td><%= film.Author %></td>
+							<td><%= film.title %></td>
+							<td><%= film.year %></td>
+							<td><%= film.author %></td>
 						</tr>
 						<% }); %>
 						
