@@ -29,6 +29,8 @@
 						<th>Titre</th>
 						<th>Année</th>
 						<th>Réalisateur</th>
+						<th>Genre</th>
+						<th>Action</th>
 					</tr>
 					
 					<% data.forEach(function(film) { %>
@@ -37,6 +39,12 @@
 							<td><%= film.title %></td>
 							<td><%= film.year %></td>
 							<td><%= film.author %></td>
+							<td><%= film.genre %></td>
+							<td>
+								<a href="">Détails</a>&nbsp;&nbsp;
+								<a href="/<%=film.id%>">Modifier</a>&nbsp;&nbsp;
+								<a href="">Supprimer</a>
+							</td>
 						</tr>
 						<% }); %>
 						
