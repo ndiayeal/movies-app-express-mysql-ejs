@@ -41,9 +41,9 @@ main #art1 p .Crutzen {
 	color: red;
 	font-size:x-large;
 }
-main div{
+/* main div{
 	display:flex;
-}
+} */
 main div #art2{
 	flex:1;
 }

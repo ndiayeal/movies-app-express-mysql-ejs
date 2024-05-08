@@ -1,0 +1,66 @@
+<div>
+	<article id="art2">
+		<form>
+			<table class="table">
+				<tr>
+					<td>
+						<input type="text" name="filter" class="form-control" placeholder="Rechercher...">
+					</td>
+					<td>
+						<button type="submit" class="btn btn-primary">Rechercher</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+		<div class="table-responsive">
+			<div class="col text-end">
+				<a href="/create" class="btn btn-primary mb-2">+ Nouveau film</a>
+			</div>
+			<table class="table table-striped table-sm" style="width: 100%;">
+				<thead>
+					<tr>
+						<th scope="col">Titre</th>
+						<th scope="col">Année</th>
+						<th scope="col">Réalisateur</th>
+						<th scope="col" class="text-end">Action</th>
+					</tr>
+				</thead>
+			
+			<tbody>
+				<% data.forEach(function(film) { %>
+			
+					<tr>
+						<td><%= film.title %></td>
+						<td><%= film.year %></td>
+						<td><%= film.author %></td>
+						<td>
+							<div class="d-flex flex-row justify-content-end gap-2">
+
+								<a href="/view/<%= film.id %>" type="button" class="btn btn-primary btn-small">
+									<i class="bi bi-eye"></i>
+								</a>
+	
+								<a href="/edit/<%= film.id %>" type="button" class="btn btn-warning btn-small">
+									<i class="bi bi-pencil"></i>
+								</a>
+	
+								<form action="/delete/<%= film.id %>?_method=DELETE" method="POST" class="position-relative">
+									<button type="submit" class="btn btn-danger btn-small">
+										<i class="bi bi-trash"></i>
+									</button>
+								</form>
+	
+							</div>
+							
+							
+						</td>
+					</tr>
+					<% }); %>
+			</tbody>
+				
+		</table>
+		</div>
+		
+	</article>
+</div>

@@ -1,0 +1,51 @@
+<div>
+	<article id="art2">
+		<div class="">
+			<form action="/create" method="POST">
+				<div class="form-group mt-2">
+					<label for="title">Titre</label>
+					<input type="text" class="form-control" id="title" name="title" />
+				</div>
+
+				<div class="form-group mt-2">
+					<label for="description">Description</label>
+					<input type="text" class="form-control" id="description" name="description" />
+				</div>
+
+
+				<div class="form-group mt-2">
+					<label for="year">Année</label>
+					<input type="text" class="form-control" id="year" name="year" />
+				</div>
+
+				<div class="form-group mt-2">
+					<label for="author">Auteur</label>
+					<input type="text" class="form-control" id="author" name="author" />
+				</div>
+
+				<div class="form-group mt-2">
+					<label for="genre">Genre</label>
+					<select id="genre" class="form-control" name="genre">
+						<option selected>Choisir...</option>
+						<option value="ACTION">Action</option>
+						<option value="AVENTURE">Aventure</option>
+						<option value="COMEDIE">Comédie</option>
+						<option value="DRAME">Drame</option>
+						<option value="HORREUR">Horreur</option>
+						<option value="SCIENCE-FICTION">Science-fiction</option>
+						<option value="ROMANCE">Romance</option>
+						<option value="CRIME">Crime</option>
+						<option value="DOCUMENTAIRE">Documentaire</option>
+					</select>
+				</div>
+
+				<div class="mt-2"> Catégorie &nbsp;
+					<input type="radio" name="is_serie" value="1" checked> Série
+					<input type="radio" name="is_serie" value="0"> Film
+				</div>
+				<button type="submit" class="btn btn-primary mt-4">Enregistrer</button>
+				<a href="/" class="btn btn-danger mt-4">Annuler</a>
+			</form>
+		</div>
+	</article>
+</div>
