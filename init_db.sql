@@ -27,3 +27,28 @@ VALUES
   ('Sauve qui peut (la vie)', 'neant', 1980, 'Jean-Luc Godard'),
   ('Nope', 'neant', 2022, 'Jordan Peele'),
   ('L''amour à mort', 'neant', 1984, 'Alain Resnais');
+
+
+
+CREATE TABLE `user` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `email` varchar(100) DEFAULT '',
+  `password` varchar(100) NOT NULL,
+  `session_id` varchar(100) NOT NULL DEFAULT ''
+);
+
+ALTER TABLE movie ADD COLUMN user_id INT;
+
+
+ALTER TABLE movie
+ADD CONSTRAINT fk_user
+FOREIGN KEY (user_id) REFERENCES user(id)
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
+
+
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `user_name`, `email`, `password`, `session_id`) VALUES
+(null, 'Moussa', 'SOW', 'msow', 'msow@gmail.com', 'password', '');

@@ -1,8 +1,8 @@
 const db = require('../config/db');
 
 const Movie = {
-		getAll(callback) {
-				db.query('SELECT * FROM movie order by id desc', callback);
+		getAll(user_id, callback) {
+				db.query('SELECT * FROM movie where user_id = ? order by id desc', [user_id], callback);
 		},
 		getById(id, callback) {
 				db.query('SELECT * FROM movie WHERE id = ?', [id], callback);

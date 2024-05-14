@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="text">Inscription</div>
+	<form action="/signup" method="post" class="row">
+
+		<div class="col-md-6 data form-group">
+			<label class="form-control-label" for="first_name">Prénom</label>
+			<input class="form-control" type="text" name="first_name" id="first_name" />
+		</div>
+		<div class="col-md-6 data form-group">
+			<label class="form-control-label" for="last_name">Nom</label>
+			<input class="form-control" type="text" name="last_name" id="last_name" />
+		</div>
+		<div class="col-md-6 data form-group">
+			<label class="form-control-label" for="email">Email</label>
+			<input class="form-control" type="email" name="email" id="email" />
+		</div>
+		<div class="col-md-6 data form-group">
+			<label class="form-control-label" for="user_name">Login</label>
+			<input class="form-control" type="text" name="user_name" id="user_name" />
+		</div>
+		<div class="col-md-6 data form-group">
+			<label class="form-control-label" for="password">Mot de passe</label>
+			<input class="form-control" type="password" name="password" id="password" />
+		</div>
+		<div class="col-md-6 data form-group">
+			<label class="form-control-label" for="confirm_password">Confirmation mot de passe</label>
+			<input class="form-control" type="password" name="confirm_password" id="password" />
+		</div>
+
+
+			<br>
+			<div class="text-center pt-3 mb-3 pb-1">
+					<button type="submit" class="btn btn-primary">S'inscrire</button>
+			</div>
+			<div class="d-flex align-items-center justify-content-center">
+					<p class="mb-0 me-2">J'ai déjà un compte ?</p>
+					<a href="/signin" class="btn btn-outline-primary">Se connecter</a>
+			</div>
+	</form>
+</div>

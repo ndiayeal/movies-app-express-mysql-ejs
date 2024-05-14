@@ -12,18 +12,6 @@
 	
 </head>
 <body>
-	
-	<!-- entete de la page -->
-	<header>
-		<%- include ('partials/header.ejs') %>
-	</header>
-	
-	<!-- le navbar de la page -->
-	<nav>
-		<%- include ('partials/nav.ejs') %>
-		
-	</nav>
-	
     <% if(error && error.length > 0){ %>
         <div class="alert alert-danger" role="alert">
             <%= error %>
@@ -41,6 +29,7 @@
             <%= warning %>
         </div>
     <% } %>
+
 
 	<%- body %>
 	

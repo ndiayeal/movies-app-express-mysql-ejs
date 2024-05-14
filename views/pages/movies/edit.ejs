@@ -1,28 +1,28 @@
 <div>
 	<article id="art2">
 		<div class="">
-			<form action="/edit/<%= data.id %>?_method=PUT" method="POST">
-				<div class="form-group mt-2">
+			<form action="/movies/edit/<%= data.id %>?_method=PUT" method="POST" class="row">
+				<div class="col-md-6 form-group mt-2">
 					<label for="title">Titre</label>
 					<input value="<%= data.title %>" type="text" class="form-control" id="title" name="title" />
 				</div>
-				<div class="form-group mt-2">
+				<div class="col-md-6 form-group mt-2">
 					<label for="description">Description</label>
 					<input value="<%= data.description %>" type="text" class="form-control" id="description" name="description" />
 				</div>
 				
 				
-				<div class="form-group mt-2">
+				<div class="col-md-6 form-group mt-2">
 					<label for="year">Année</label>
 					<input value="<%= data.year %>" type="text" class="form-control" id="year" name="year" />
 				</div>
 				
-				<div class="form-group mt-2">
+				<div class="col-md-6 form-group mt-2">
 					<label for="author">Auteur</label>
 					<input value="<%= data.author %>" type="text" class="form-control" id="author" name="author" />
 				</div>
 				
-				<div class="form-group mt-2">
+				<div class="col-md-6 form-group mt-2">
 					<label for="genre">Genre</label>
 					<select value="<%= data.genre %>" id="genre" class="form-control" name="genre">
 						<option <%= data.genre == null ? 'selected' : '' %>>Choisir...</option>
@@ -38,14 +38,15 @@
 					</select>
 				</div>
 				
-				<div class="form-group mt-2">
+				<div class="col-md-6 form-group mt-2">
 					<label for="is_serie">Catégorie</label>
 					<input type="radio" name="is_serie" value="1" <%= data.is_serie == 1 ? 'checked' : '' %>> Série  
 					<input type="radio" name="is_serie" value="0" <%= data.is_serie == 0 ? 'checked' : '' %>> Film
 				</div>
-				
-				<button type="submit" class="btn btn-primary mt-4">Enregistrer</button>
-				<a href="/" class="btn btn-danger mt-4">Annuler</a>
+				<div class="col-md-6">
+					<button type="submit" class="btn btn-primary mt-4">Enregistrer</button>
+				<a href="/home" class="btn btn-danger mt-4">Annuler</a>
+				</div>
 			</form>
 		</div>
 	</article>

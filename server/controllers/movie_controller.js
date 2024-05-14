@@ -3,7 +3,8 @@ const copyright = "Alioune DIOP 2024";
 
 const movieController = {
   getAll(req, res) {
-    Movie.getAll((err, movies) => {
+    const user_id = req.session.user_id;
+    Movie.getAll(user_id, (err, movies) => {
       if (err) throw err;
       res.render("./pages/movies/index", {
         title: "Liste des films",
@@ -16,10 +17,14 @@ const movieController = {
     res.render("./pages/movies/add", {title: 'Nouveau film', copyright });
   },
   store(req, res) {
-    const data = { ...req.body };
+    const user_id = req.session.user_id;
+    
+    const data = { ...req.body, user_id };
     Movie.create(data, (err) => {
       if (err) throw err;
-      res.redirect("/");
+      
+      req.flash('success', 'Enregistrement effectué avec succès!');
+      res.redirect("/movies");
     });
   },
   edit(req, res) {
@@ -39,14 +44,14 @@ const movieController = {
     console.log(data);
     Movie.update(id, data, (err) => {
       if (err) throw err;
-      res.redirect("/");
+      res.redirect("/movies");
     });
   },
   delete(req, res) {
     const id = req.params.id;
     Movie.delete(id, (err) => {
       if (err) throw err;
-      res.redirect("/");
+      res.redirect("/movies");
     });
   },
 };
