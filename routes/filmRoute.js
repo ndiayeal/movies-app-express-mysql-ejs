@@ -9,7 +9,6 @@ const copyright = "Alioune DIOP 2024";
 //app.use(myLogger);
 
 router.get("/", filmController.home);
-
 router.get("/films", filmController.afficheFilms);
 
 
