@@ -23,7 +23,7 @@
 		
 		<div>
 			<article id="art2">
-				<a href="/ajout" style="margin-bottom: 4px;">Nouveau film</a>
+				<a href="/films/ajout-form" style="margin-bottom: 4px;">Nouveau film</a>
 				<table border style="width: 100%;">
 					<tr>
 						<th>Titre</th>
@@ -42,7 +42,7 @@
 							<td><%= film.genre %></td>
 							<td>
 								<a href="">Détails</a>&nbsp;&nbsp;
-								<a href="/<%=film.id%>">Modifier</a>&nbsp;&nbsp;
+								<a href="/films/modif-form/<%=film.id%>">Modifier</a>&nbsp;&nbsp;
 								<a href="">Supprimer</a>
 							</td>
 						</tr>

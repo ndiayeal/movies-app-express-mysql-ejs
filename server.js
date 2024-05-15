@@ -1,10 +1,9 @@
 const express = require("express");
 const app = express();
-const con = require('./db');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const myLogger = require('./middlewares/log')
-
+const filmRouter = require('./routes/filmRoute');
+const utilRouter = require('./routes/utilRoute');
 const PORT = 3000;
 const copyright = "Alioune DIOP 2024";
 
@@ -17,102 +16,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'))
 
 
+app.use('/', filmRouter);
+app.use('/', utilRouter);
 
-
-//app.use(myLogger);
-
-app.get("/", (req, res) => {
-  const sql = "select * from movie order by id desc";
-  con.query(sql, (err,rows) => {
-    if (err){
-      throw err;
-    }
-    
-    res.render("accueil.ejs", {
-      title: 'La liste des films depuis server.js',
-      data: rows,
-      copyright} );
-})  
-});
-
-
-app.get("/contact", (req, res) => {
-  //console.log("url = " + req.url)
-  res.render('./pages/contact.ejs', {title: 'Contact page', copyright})
-})
-
-app.get("/search", myLogger, (req, res) => {
-  //console.log("url = " + req.url)
-  res.render('./pages/search.ejs', {title: 'Search page', copyright})
-})
-
-app.get("/upload", (req, res) => {
-  //console.log("url = " + req.url)
-  res.render('./pages/upload.ejs', {title: 'Upload page', copyright})
-})
-
-app.get('/ajout', (req, res, next) => {
-  res.render('./pages/films/ajout.ejs', {
-    title: 'Formulaire d\'ajout film',
-    copyright
-  })
-});
-
-app.get('/modif/:id', (req, res)=> {
-  
-  const id = req.params.id;
-  console.log("id a modifier => " + id);
-  
-  //const sql = "select * from movie where id = " + id;
-  const sql = "select * from movie where id = ? ";
-  con.query(sql, id, (err, result) => {
-    res.render('./pages/films/modif.ejs', {
-      title: "Formulaire de modification de film",
-      copyright,
-      data: result[0]
-    });
-  })
-  
-  
-})
-
-app.post('/ajout', (req, res) => {
-  const data = {
-    title: req.body.titre,
-    description: req.body.description,
-    year: req.body.annee,
-    author: req.body.auteur,
-    is_serie: req.body.categorie,
-    genre: req.body.genre,
-  }
-  
-  const sql = "insert into movie set ?";
-  con.query(sql, data, (err, result) => {
-    if (err) throw err;
-    
-    console.log("Film avec id => " + result.insertId + " ajouté avec succès");
-    
-    res.redirect("/");
-  });
-})
-
-app.put("/modif/:id", (req, res) => {
-  const id = req.params.id;
-  const data = {
-    title: req.body.titre,
-    description: req.body.description,
-    year: req.body.annee,
-    author: req.body.auteur,
-    is_serie: req.body.categorie,
-    genre: req.body.genre,
-  } 
-  const sql = "update movie set ? where id = ?";
-  con.query(sql, [data, id], (err, result) => {
-    if (err) throw err;
-    
-    res.redirect("/");
-  });
-});
 
 
 app.listen(PORT, () => {
