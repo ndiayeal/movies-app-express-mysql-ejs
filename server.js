@@ -3,6 +3,7 @@ const app = express();
 const con = require('./db');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const myLogger = require('./middlewares/log')
 
 const PORT = 3000;
 const copyright = "Alioune DIOP 2024";
@@ -15,6 +16,10 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'))
 
+
+
+
+//app.use(myLogger);
 
 app.get("/", (req, res) => {
   const sql = "select * from movie order by id desc";
@@ -30,6 +35,22 @@ app.get("/", (req, res) => {
 })  
 });
 
+
+app.get("/contact", (req, res) => {
+  //console.log("url = " + req.url)
+  res.render('./pages/contact.ejs', {title: 'Contact page', copyright})
+})
+
+app.get("/search", myLogger, (req, res) => {
+  //console.log("url = " + req.url)
+  res.render('./pages/search.ejs', {title: 'Search page', copyright})
+})
+
+app.get("/upload", (req, res) => {
+  //console.log("url = " + req.url)
+  res.render('./pages/upload.ejs', {title: 'Upload page', copyright})
+})
+
 app.get('/ajout', (req, res, next) => {
   res.render('./pages/films/ajout.ejs', {
     title: 'Formulaire d\'ajout film',
@@ -37,7 +58,7 @@ app.get('/ajout', (req, res, next) => {
   })
 });
 
-app.get('/:id', (req, res)=> {
+app.get('/modif/:id', (req, res)=> {
   
   const id = req.params.id;
   console.log("id a modifier => " + id);
@@ -92,6 +113,7 @@ app.put("/modif/:id", (req, res) => {
     res.redirect("/");
   });
 });
+
 
 app.listen(PORT, () => {
   console.log("server listening on port: " + PORT);
